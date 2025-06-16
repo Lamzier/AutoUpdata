@@ -1,22 +1,24 @@
 ﻿@page "/upload"
 @using System.ComponentModel.DataAnnotations
+@using Microsoft.AspNetCore.Components.Forms
 @rendermode InteractiveServer
-
-<title>提交新版本文件</title>
 
 <div class="d-flex align-items-center justify-content-center vh-100">
     <div class="w-100" style="max-width: 600px;">
         <h3 class="text-center">提交新版本文件</h3>
         <div class="card shadow-sm p-4">
-            <EditForm FormName="uploadForm" Model="@_uploadModel" OnValidSubmit="@HandleValidSubmit" enctype="multipart/form-data">
-                <DataAnnotationsValidator/>
-                <ValidationSummary/>
+            <EditForm FormName="uploadForm" Model="@_uploadModel" OnValidSubmit="@HandleValidSubmit">
+                <DataAnnotationsValidator />
+                <ValidationSummary />
 
                 <div class="mb-3">
                     <label for="file_upload" class="form-label">上传文件（ZIP 格式）：</label>
-                    @* <InputFile id="file_upload" name="file_upload" @bind-Value="_uploadModel.File" accept=".zip" class="form-control"/> *@
-                    <InputFile id="file_upload" name="file_upload" OnChange="@LoadFiles" multiple/>
-                    <ValidationMessage For="@(() => _uploadModel.File)"/>
+                    <InputFile id="file_upload" name="file_upload" OnChange="@LoadFiles" accept=".zip" class="form-control" />
+                    @if (!string.IsNullOrEmpty(_fileError))
+                    {
+                        <div class="text-danger">@_fileError</div>
+                    }
+                    <ValidationMessage For="@(() => _uploadModel.File)" />
                 </div>
 
                 <div class="mb-3">
@@ -37,7 +39,16 @@
                     <ValidationMessage For="@(() => _uploadModel.StartupFile)"/>
                 </div>
 
-                <button type="submit" class="btn btn-primary w-100">提交</button>
+                @if (_showProgress)
+                {
+                    <div class="progress mb-3" style="height: 20px;">
+                        <div class="progress-bar" role="progressbar" style="width:@($"{_progressPercentage}%")" aria-valuenow="@_progressPercentage" aria-valuemin="0" aria-valuemax="100">
+                            @_progressPercentage%
+                        </div>
+                    </div>
+                }
+
+                <button type="submit" class="btn btn-primary w-100" disabled="@(!_canSubmit)">提交</button>
             </EditForm>
         </div>
     </div>
@@ -70,40 +81,101 @@
         background-color: #0056b3;
         border-color: #0056b3;
     }
+
+    .progress {
+        background-color: #e9ecef;
+    }
+
+    .progress-bar {
+        background-color: #007bff;
+        transition: width 0.1s ease;
+    }
 </style>
 
 @code {
     private readonly UploadModel _uploadModel = new();
+    private IBrowserFile? _selectedFile;
+    private string? _fileError;
+    private bool _showProgress;
+    private int _progressPercentage;
+    private bool _canSubmit;
 
-    private void LoadFiles(InputFileChangeEventArgs e)
+    private async void LoadFiles(InputFileChangeEventArgs e)
     {
-        Console.WriteLine("load");
-    }
+        _fileError = null;
+        _canSubmit = false;
+        var files = e.GetMultipleFiles(1);
+        if (files.Count == 0) return;
 
-    private void HandleValidSubmit()
-    { 
-        if (_uploadModel.File == null)
-        {
-            Console.WriteLine("未选择文件");
-            return;
-        }
+        _selectedFile = files[0];
+        var fileName = _selectedFile.Name.ToLower();
 
-        var fileName = _uploadModel.File.Name.ToLower();
         if (!fileName.EndsWith(".zip"))
         {
-            Console.WriteLine("必须上传 ZIP 文件");
+            _fileError = "只能上传 ZIP 格式的文件";
             return;
         }
 
-        Console.WriteLine("表单验证通过！");
+        _uploadModel.File = _selectedFile;
+        _canSubmit = true;
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        if (_selectedFile == null || !_canSubmit)
+        {
+            Console.WriteLine("无效的文件");
+            return;
+        }
+
+        _showProgress = true;
+        _progressPercentage = 0;
+
+        // 上传到本地目录
+        await SaveFileToLocalAsync(_selectedFile);
+
+        Console.WriteLine("上传完成！");
+        _showProgress = false;
+        _progressPercentage = 0;
+    }
+
+    private async Task SaveFileToLocalAsync(IBrowserFile file)
+    {
+        const int bufferSize = 1024 * 10; // 10KB
+        var buffer = new byte[bufferSize];
+
+        var uploadPath = Path.Combine(Directory.GetCurrentDirectory(), "upload");
+
+        if (!Directory.Exists(uploadPath))
+        {
+            Directory.CreateDirectory(uploadPath);
+        }
+
+        var filePath = Path.Combine(uploadPath, file.Name);
+
+        using var stream = file.OpenReadStream(file.Size);
+        using var fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write);
+
+        long totalRead = 0;
+
+        while (totalRead < file.Size)
+        {
+            var read = await stream.ReadAsync(buffer, 0, bufferSize);
+            if (read == 0) break;
+
+            await fileStream.WriteAsync(buffer, 0, read);
+            totalRead += read;
+
+            _progressPercentage = (int)((double)totalRead / file.Size * 100);
+            await InvokeAsync(StateHasChanged);
+            await Task.Delay(10); // 可选：模拟延迟
+        }
+
+        Console.WriteLine($"文件已保存至：{filePath}");
     }
 
     public class UploadModel
     {
-        // [Required(ErrorMessage = "请上传 ZIP 文件")]
-        // [FileExtensions(Extensions = ".zip", ErrorMessage = "只能上传 ZIP 格式的文件")]
-        // public string? File { get; set; }
-        // [Required(ErrorMessage = "请上传 ZIP 文件")]
         public IBrowserFile? File { get; set; }
 
         [Required(ErrorMessage = "请输入名称")] public string? Name { get; set; }
@@ -112,5 +184,4 @@
 
         [Required(ErrorMessage = "请输入启动文件名")] public string? StartupFile { get; set; }
     }
-
 }

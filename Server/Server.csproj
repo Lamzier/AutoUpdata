@@ -10,4 +10,13 @@
         <Folder Include="Controller\"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <Content Update="wwwroot\app.css">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+      <Content Update="wwwroot\favicon.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
 </Project>

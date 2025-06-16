@@ -26,3 +26,6 @@ C:\Users\12554\RiderProjects\AutoUpdata\Server\obj\Release\net8.0\refint\Server.
 C:\Users\12554\RiderProjects\AutoUpdata\Server\obj\Release\net8.0\Server.pdb
 C:\Users\12554\RiderProjects\AutoUpdata\Server\obj\Release\net8.0\Server.genruntimeconfig.cache
 C:\Users\12554\RiderProjects\AutoUpdata\Server\obj\Release\net8.0\ref\Server.dll
+C:\Users\12554\RiderProjects\AutoUpdata\Server\obj\Release\net8.0\Server.sourcelink.json
+C:\Users\12554\RiderProjects\AutoUpdata\Server\bin\Release\net8.0\wwwroot\app.css
+C:\Users\12554\RiderProjects\AutoUpdata\Server\bin\Release\net8.0\wwwroot\favicon.png
