@@ -1,0 +1,5 @@
+C:\Users\12554\RiderProjects\AutoUpdata\AutoUpdata\bin\Release\net8.0\win-x86\publish\AutoUpdata.exe
+C:\Users\12554\RiderProjects\AutoUpdata\AutoUpdata\bin\Release\net8.0\win-x86\publish\AutoUpdata.dll
+C:\Users\12554\RiderProjects\AutoUpdata\AutoUpdata\bin\Release\net8.0\win-x86\publish\AutoUpdata.deps.json
+C:\Users\12554\RiderProjects\AutoUpdata\AutoUpdata\bin\Release\net8.0\win-x86\publish\AutoUpdata.runtimeconfig.json
+C:\Users\12554\RiderProjects\AutoUpdata\AutoUpdata\bin\Release\net8.0\win-x86\publish\AutoUpdata.pdb

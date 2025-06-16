@@ -1,0 +1,14 @@
+C:\Users\12554\RiderProjects\AutoUpdata\AutoUpdata\bin\Release\net8.0\linux-x64\AutoUpdata
+C:\Users\12554\RiderProjects\AutoUpdata\AutoUpdata\bin\Release\net8.0\linux-x64\AutoUpdata.deps.json
+C:\Users\12554\RiderProjects\AutoUpdata\AutoUpdata\bin\Release\net8.0\linux-x64\AutoUpdata.runtimeconfig.json
+C:\Users\12554\RiderProjects\AutoUpdata\AutoUpdata\bin\Release\net8.0\linux-x64\AutoUpdata.dll
+C:\Users\12554\RiderProjects\AutoUpdata\AutoUpdata\bin\Release\net8.0\linux-x64\AutoUpdata.pdb
+C:\Users\12554\RiderProjects\AutoUpdata\AutoUpdata\obj\Release\net8.0\linux-x64\AutoUpdata.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\12554\RiderProjects\AutoUpdata\AutoUpdata\obj\Release\net8.0\linux-x64\AutoUpdata.AssemblyInfoInputs.cache
+C:\Users\12554\RiderProjects\AutoUpdata\AutoUpdata\obj\Release\net8.0\linux-x64\AutoUpdata.AssemblyInfo.cs
+C:\Users\12554\RiderProjects\AutoUpdata\AutoUpdata\obj\Release\net8.0\linux-x64\AutoUpdata.csproj.CoreCompileInputs.cache
+C:\Users\12554\RiderProjects\AutoUpdata\AutoUpdata\obj\Release\net8.0\linux-x64\AutoUpdata.dll
+C:\Users\12554\RiderProjects\AutoUpdata\AutoUpdata\obj\Release\net8.0\linux-x64\refint\AutoUpdata.dll
+C:\Users\12554\RiderProjects\AutoUpdata\AutoUpdata\obj\Release\net8.0\linux-x64\AutoUpdata.pdb
+C:\Users\12554\RiderProjects\AutoUpdata\AutoUpdata\obj\Release\net8.0\linux-x64\AutoUpdata.genruntimeconfig.cache
+C:\Users\12554\RiderProjects\AutoUpdata\AutoUpdata\obj\Release\net8.0\linux-x64\ref\AutoUpdata.dll
