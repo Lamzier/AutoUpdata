@@ -1,6 +1,9 @@
 ﻿@page "/upload"
 @using System.ComponentModel.DataAnnotations
-@using Microsoft.AspNetCore.Components.Forms
+@using System.IO.Compression
+@using System.Security.Cryptography
+@using System.Text.Json
+@using Microsoft.Data.Sqlite
 @rendermode InteractiveServer
 
 <div class="d-flex align-items-center justify-content-center vh-100">
@@ -8,17 +11,17 @@
         <h3 class="text-center">提交新版本文件</h3>
         <div class="card shadow-sm p-4">
             <EditForm FormName="uploadForm" Model="@_uploadModel" OnValidSubmit="@HandleValidSubmit">
-                <DataAnnotationsValidator />
-                <ValidationSummary />
+                <DataAnnotationsValidator/>
+                <ValidationSummary/>
 
                 <div class="mb-3">
                     <label for="file_upload" class="form-label">上传文件（ZIP 格式）：</label>
-                    <InputFile id="file_upload" name="file_upload" OnChange="@LoadFiles" accept=".zip" class="form-control" />
+                    <InputFile id="file_upload" name="file_upload" OnChange="@LoadFiles" accept=".zip" class="form-control"/>
                     @if (!string.IsNullOrEmpty(_fileError))
                     {
                         <div class="text-danger">@_fileError</div>
                     }
-                    <ValidationMessage For="@(() => _uploadModel.File)" />
+                    <ValidationMessage For="@(() => _uploadModel.File)"/>
                 </div>
 
                 <div class="mb-3">
@@ -45,6 +48,13 @@
                         <div class="progress-bar" role="progressbar" style="width:@($"{_progressPercentage}%")" aria-valuenow="@_progressPercentage" aria-valuemin="0" aria-valuemax="100">
                             @_progressPercentage%
                         </div>
+                    </div>
+                }
+
+                @if (!string.IsNullOrEmpty(_showSuccessMessage))
+                {
+                    <div class="alert alert-success mt-3 text-lg-start" role="alert" style="white-space: pre-line">
+                        @_showSuccessMessage
                     </div>
                 }
 
@@ -97,10 +107,11 @@
     private IBrowserFile? _selectedFile;
     private string? _fileError;
     private bool _showProgress;
-    private int _progressPercentage;
+    private double _progressPercentage;
     private bool _canSubmit;
+    private string? _showSuccessMessage;
 
-    private async void LoadFiles(InputFileChangeEventArgs e)
+    private void LoadFiles(InputFileChangeEventArgs e)
     {
         _fileError = null;
         _canSubmit = false;
@@ -124,7 +135,7 @@
     {
         if (_selectedFile == null || !_canSubmit)
         {
-            Console.WriteLine("无效的文件");
+            _fileError = "无效的文件";
             return;
         }
 
@@ -133,10 +144,169 @@
 
         // 上传到本地目录
         await SaveFileToLocalAsync(_selectedFile);
-
-        Console.WriteLine("上传完成！");
+        var uploadPath = Path.Combine(Directory.GetCurrentDirectory(), "upload");
+        var filePath = Path.Combine(uploadPath, _selectedFile.Name);
+        // 解压文件
+        await UnZipFileAsync(filePath, _uploadModel.Name!, _uploadModel.Version!, _uploadModel.StartupFile!);
+        // 分析文件
+        var targetFolder = Path.Combine(uploadPath, $"{_uploadModel.Name}-{_uploadModel.Version}");
+        await AnalysisFileAsync(targetFolder, _uploadModel.Name!, _uploadModel.Version!);
+        // 写入到版本数据库
+        await UpdateVersionDatabase(_uploadModel.Name!, _uploadModel.Version!);
+        _showSuccessMessage += "新版本程序提交完成！\n";
         _showProgress = false;
         _progressPercentage = 0;
+    }
+
+    private async Task UpdateVersionDatabase(string name, string version)
+    {
+        _showSuccessMessage += "正在更新版本数据库...\n";
+        _progressPercentage = 99;
+        await InvokeAsync(StateHasChanged);
+        var dbPath = Path.Combine(Directory.GetCurrentDirectory(), "version.db");
+        var connectionString = $"Data Source={dbPath}";
+        try
+        {
+            await using var connection = new SqliteConnection(connectionString);
+            await connection.OpenAsync();
+
+            // 创建表（如果不存在）
+            var createTableCmd = connection.CreateCommand();
+            createTableCmd.CommandText = @"
+            CREATE TABLE IF NOT EXISTS versions (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                name TEXT NOT NULL,
+                version TEXT NOT NULL,
+                createTime DATETIME DEFAULT CURRENT_TIMESTAMP
+            )";
+            await createTableCmd.ExecuteNonQueryAsync();
+
+            // 插入新记录
+            var insertCmd = connection.CreateCommand();
+            insertCmd.CommandText = @"
+            INSERT INTO versions (name, version)
+            VALUES (@name, @version)";
+            insertCmd.Parameters.AddWithValue("@name", name);
+            insertCmd.Parameters.AddWithValue("@version", version);
+
+            await insertCmd.ExecuteNonQueryAsync();
+
+            _showSuccessMessage += $"成功写入数据库：{name} v{version}\n";
+            _progressPercentage = 100;
+        }
+        catch (Exception ex)
+        {
+            _showSuccessMessage += $"数据库更新失败：{ex.Message}\n";
+        }
+        finally
+        {
+            await InvokeAsync(StateHasChanged);
+        }
+    }
+
+
+    // 提取文件
+    private async Task UnZipFileAsync(string filePath, string name, string version, string startupFile)
+    {
+        _showSuccessMessage += "正在解压Zip（可关闭浏览器）......\n";
+        await InvokeAsync(StateHasChanged);
+        _progressPercentage = 80;
+        // 解压文件到upload目录，创建目录：name-version
+        var uploadPath = Path.Combine(Directory.GetCurrentDirectory(), "upload");
+        var targetFolder = Path.Combine(uploadPath, $"{name}-{version}");
+        if (Directory.Exists(targetFolder))
+        {
+            Directory.Delete(targetFolder, true); // 如果存在先删除旧目录
+        }
+
+        Directory.CreateDirectory(targetFolder);
+        // 解压 ZIP 文件
+        try
+        {
+            await using (var stream = new FileStream(filePath, FileMode.Open))
+            {
+                var archive = new ZipArchive(stream, ZipArchiveMode.Read);
+                for (var i = 0; i < archive.Entries.Count; i++)
+                {
+                    var entry = archive.Entries[i];
+                    if (string.IsNullOrEmpty(entry.Name)) continue; // 跳过空目录
+
+                    var destinationPath = Path.Combine(targetFolder, entry.FullName);
+                    var destinationDir = Path.GetDirectoryName(destinationPath);
+
+                    if (!Directory.Exists(destinationDir))
+                    {
+                        Directory.CreateDirectory(destinationDir!);
+                    }
+
+                    entry.ExtractToFile(destinationPath, true);
+                    var pro = i * 1.0 / archive.Entries.Count * 100 * 0.1;
+                    _progressPercentage = 80 + pro;
+                }
+            }
+
+            // 检查是否包含启动文件
+            var startupFilePath = Path.Combine(targetFolder, startupFile);
+            if (!File.Exists(startupFilePath))
+            {
+                _showSuccessMessage += $"未找到启动文件 {startupFile}！\n";
+            }
+            else
+            {
+                _showSuccessMessage += $"找到启动文件：{startupFile}\n";
+            }
+        }
+        catch (Exception ex)
+        {
+            _showSuccessMessage += $"解压失败：{ex.Message}\n";
+        }
+        finally
+        {
+            _showSuccessMessage += "解压完成!\n";
+            _progressPercentage = 90; // 留下10%给分析
+            await InvokeAsync(StateHasChanged);
+        }
+    }
+
+    // 分析文件
+    private async Task AnalysisFileAsync(string folderPath, string name, string version)
+    {
+        _progressPercentage = 90;
+        await InvokeAsync(StateHasChanged);
+        var jsonPath = Path.Combine(folderPath, "..", $"{name}-{version}.json");
+        if (File.Exists(jsonPath))
+        {
+            File.Delete(jsonPath);
+        }
+
+        var files = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories);
+        var fileHashes = new Dictionary<string, string>();
+        for (var i = 0; i < files.Length; i++)
+        {
+            var file = files[i];
+            var relativePath = file.Substring(folderPath.Length + 1); // 去掉根目录路径
+            var md5 = await ComputeMd5Async(file);
+            fileHashes[relativePath] = md5;
+            var pro = i * 1.0 / files.Length * 100 * 0.09;
+            _progressPercentage = 90 + pro;
+        }
+
+        var json = JsonSerializer.Serialize(fileHashes, new JsonSerializerOptions { WriteIndented = true });
+
+        await File.WriteAllTextAsync(jsonPath, json);
+
+        _showSuccessMessage += $"JSON文件已创建：{jsonPath}\n";
+        _progressPercentage = 99; // 全部分析完成 , 剩下1给数据库
+        await InvokeAsync(StateHasChanged);
+    }
+
+    // 获取文件md5
+    private static async Task<string> ComputeMd5Async(string filePath)
+    {
+        using var md5 = MD5.Create();
+        await using var stream = File.OpenRead(filePath);
+        var hash = await md5.ComputeHashAsync(stream);
+        return BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant();
     }
 
     private async Task SaveFileToLocalAsync(IBrowserFile file)
@@ -152,9 +322,14 @@
         }
 
         var filePath = Path.Combine(uploadPath, file.Name);
+        // 如果存在则删除
+        if (File.Exists(filePath))
+        {
+            File.Delete(filePath);
+        }
 
-        using var stream = file.OpenReadStream(file.Size);
-        using var fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write);
+        await using var stream = file.OpenReadStream(file.Size);
+        await using var fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write);
 
         long totalRead = 0;
 
@@ -166,12 +341,12 @@
             await fileStream.WriteAsync(buffer, 0, read);
             totalRead += read;
 
-            _progressPercentage = (int)((double)totalRead / file.Size * 100);
+            _progressPercentage = (double)totalRead / file.Size * 100 * 0.8; // 留20%给分析
+
             await InvokeAsync(StateHasChanged);
-            await Task.Delay(10); // 可选：模拟延迟
         }
 
-        Console.WriteLine($"文件已保存至：{filePath}");
+        _showSuccessMessage += $"文件已保存至：{filePath}\n";
     }
 
     public class UploadModel
@@ -184,4 +359,5 @@
 
         [Required(ErrorMessage = "请输入启动文件名")] public string? StartupFile { get; set; }
     }
+
 }

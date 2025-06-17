@@ -18,3 +18,4 @@ C:\Users\12554\RiderProjects\AutoUpdata\Client-windows-all\obj\Release\net8.0-wi
 C:\Users\12554\RiderProjects\AutoUpdata\Client-windows-all\obj\Release\net8.0-windows\Client-windows-all.pdb
 C:\Users\12554\RiderProjects\AutoUpdata\Client-windows-all\obj\Release\net8.0-windows\Client-windows-all.genruntimeconfig.cache
 C:\Users\12554\RiderProjects\AutoUpdata\Client-windows-all\obj\Release\net8.0-windows\ref\Client-windows-all.dll
+C:\Users\12554\RiderProjects\AutoUpdata\Client-windows-all\obj\Release\net8.0-windows\Client-windows-all.sourcelink.json

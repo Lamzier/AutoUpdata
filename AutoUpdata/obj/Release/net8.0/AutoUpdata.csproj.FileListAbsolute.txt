@@ -12,3 +12,4 @@ C:\Users\12554\RiderProjects\AutoUpdata\AutoUpdata\obj\Release\net8.0\refint\Aut
 C:\Users\12554\RiderProjects\AutoUpdata\AutoUpdata\obj\Release\net8.0\AutoUpdata.pdb
 C:\Users\12554\RiderProjects\AutoUpdata\AutoUpdata\obj\Release\net8.0\AutoUpdata.genruntimeconfig.cache
 C:\Users\12554\RiderProjects\AutoUpdata\AutoUpdata\obj\Release\net8.0\ref\AutoUpdata.dll
+C:\Users\12554\RiderProjects\AutoUpdata\AutoUpdata\obj\Release\net8.0\AutoUpdata.sourcelink.json

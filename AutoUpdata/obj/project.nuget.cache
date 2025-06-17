@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "M5uHWssgpQM=",
+  "dgSpecHash": "25a34Hc0Vvg=",
   "success": true,
   "projectFilePath": "C:\\Users\\12554\\RiderProjects\\AutoUpdata\\AutoUpdata\\AutoUpdata.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\12554\\.nuget\\packages\\microsoft.netcore.app.host.linux-arm64\\8.0.8\\microsoft.netcore.app.host.linux-arm64.8.0.8.nupkg.sha512"
+  ],
   "logs": []
 }

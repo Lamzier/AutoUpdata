@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "5oJbDB94DUlT26tUQSrMCkg5GTqqt8BVBajBE1c4AJ0=",
+  "Hash": "DsQlekDPKQG30WMs4s+W9KW6t6PNWIzDfyG0aDOEvbU=",
   "Source": "Server",
   "BasePath": "_content/Server",
   "Mode": "Default",
@@ -88,7 +88,7 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
+      "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\bootstrap\\bootstrap.min.css"
     },
@@ -107,7 +107,7 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
+      "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\bootstrap\\bootstrap.min.css.map"
     },

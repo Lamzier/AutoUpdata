@@ -4,19 +4,63 @@
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <ApplicationIcon>Resources\logo.ico</ApplicationIcon>
     </PropertyGroup>
 
     <ItemGroup>
-        <Folder Include="Controller\"/>
+        <Content Update="wwwroot\app.css">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Update="wwwroot\favicon.png">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Include="upload\测试-1.0.0.json"/>
+        <Content Include="upload\测试-1.0.0.json"/>
+        <Content Include="upload\测试-1.0.0\start.exe"/>
+        <Content Include="upload\测试-1.0.0\排球-正面上手发球.md"/>
+        <Content Include="upload\测试-1.0.0\篮球-行进间运球-试讲.md"/>
+        <Content Include="upload\测试-1.0.0\篮球-行进间运球.md"/>
+        <Content Include="upload\测试-1.0.0\课堂实录\asdasdasd\ddsad\asd.txt"/>
+        <Content Include="upload\测试-1.0.0\课堂实录\正脚面射门.docx"/>
+        <Content Include="upload\测试-1.0.0\课堂实录\正脚面射门.md"/>
+        <Content Include="upload\测试-1.0.0\课堂实录\正脚面运球.docx"/>
+        <Content Include="upload\测试-1.0.0\课堂实录\正脚面运球.md"/>
+        <Content Include="upload\测试-1.0.0\课堂实录\脚内侧接球.docx"/>
+        <Content Include="upload\测试-1.0.0\课堂实录\脚内侧接球.md"/>
+        <Content Include="upload\测试-1.0.0\课堂实录\脚内侧运球.docx"/>
+        <Content Include="upload\测试-1.0.0\课堂实录\脚内侧运球.md"/>
+        <Content Include="upload\测试-1.0.0\课堂实录\课堂教学实录.xlsx"/>
+        <Content Include="upload\测试-1.0.0\足球-脚内侧踢球-试讲.md"/>
+        <Content Include="upload\测试-1.0.0\足球-脚内侧踢球.md"/>
+        <Content Include="upload\测试.zip"/>
+        <Content Remove="upload\**"/>
+        <Content Update="wwwroot\bootstrap\bootstrap.min.css">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Update="wwwroot\bootstrap\bootstrap.min.css.map">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
     </ItemGroup>
 
     <ItemGroup>
-      <Content Update="wwwroot\app.css">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </Content>
-      <Content Update="wwwroot\favicon.png">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </Content>
+        <PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.0-preview.5.25277.114"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <_ContentIncludedByDefault Remove="upload\测试-1.0.0.json"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Remove="upload\**"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Remove="upload\**"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="upload\**"/>
+        <None Remove="version.db" />
     </ItemGroup>
 
 </Project>

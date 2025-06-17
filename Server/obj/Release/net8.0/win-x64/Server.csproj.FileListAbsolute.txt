@@ -19,7 +19,6 @@ C:\Users\12554\RiderProjects\AutoUpdata\Server\obj\Release\net8.0\win-x64\static
 C:\Users\12554\RiderProjects\AutoUpdata\Server\obj\Release\net8.0\win-x64\staticwebassets\msbuild.buildTransitive.Server.props
 C:\Users\12554\RiderProjects\AutoUpdata\Server\obj\Release\net8.0\win-x64\staticwebassets.pack.json
 C:\Users\12554\RiderProjects\AutoUpdata\Server\obj\Release\net8.0\win-x64\scopedcss\Components\Layout\MainLayout.razor.rz.scp.css
-C:\Users\12554\RiderProjects\AutoUpdata\Server\obj\Release\net8.0\win-x64\scopedcss\Components\Layout\NavMenu.razor.rz.scp.css
 C:\Users\12554\RiderProjects\AutoUpdata\Server\obj\Release\net8.0\win-x64\scopedcss\bundle\Server.styles.css
 C:\Users\12554\RiderProjects\AutoUpdata\Server\obj\Release\net8.0\win-x64\scopedcss\projectbundle\Server.bundle.scp.css
 C:\Users\12554\RiderProjects\AutoUpdata\Server\obj\Release\net8.0\win-x64\Server.dll
@@ -27,3 +26,15 @@ C:\Users\12554\RiderProjects\AutoUpdata\Server\obj\Release\net8.0\win-x64\refint
 C:\Users\12554\RiderProjects\AutoUpdata\Server\obj\Release\net8.0\win-x64\Server.pdb
 C:\Users\12554\RiderProjects\AutoUpdata\Server\obj\Release\net8.0\win-x64\Server.genruntimeconfig.cache
 C:\Users\12554\RiderProjects\AutoUpdata\Server\obj\Release\net8.0\win-x64\ref\Server.dll
+C:\Users\12554\RiderProjects\AutoUpdata\Server\bin\Release\net8.0\win-x64\wwwroot\app.css
+C:\Users\12554\RiderProjects\AutoUpdata\Server\bin\Release\net8.0\win-x64\wwwroot\favicon.png
+C:\Users\12554\RiderProjects\AutoUpdata\Server\bin\Release\net8.0\win-x64\Microsoft.Data.Sqlite.dll
+C:\Users\12554\RiderProjects\AutoUpdata\Server\bin\Release\net8.0\win-x64\SQLitePCLRaw.batteries_v2.dll
+C:\Users\12554\RiderProjects\AutoUpdata\Server\bin\Release\net8.0\win-x64\SQLitePCLRaw.core.dll
+C:\Users\12554\RiderProjects\AutoUpdata\Server\bin\Release\net8.0\win-x64\SQLitePCLRaw.provider.e_sqlite3.dll
+C:\Users\12554\RiderProjects\AutoUpdata\Server\bin\Release\net8.0\win-x64\e_sqlite3.dll
+C:\Users\12554\RiderProjects\AutoUpdata\Server\obj\Release\net8.0\win-x64\Server.csproj.AssemblyReference.cache
+C:\Users\12554\RiderProjects\AutoUpdata\Server\obj\Release\net8.0\win-x64\Server.sourcelink.json
+C:\Users\12554\RiderProjects\AutoUpdata\Server\obj\Release\net8.0\win-x64\Server.csproj.Up2Date
+C:\Users\12554\RiderProjects\AutoUpdata\Server\bin\Release\net8.0\win-x64\wwwroot\bootstrap\bootstrap.min.css
+C:\Users\12554\RiderProjects\AutoUpdata\Server\bin\Release\net8.0\win-x64\wwwroot\bootstrap\bootstrap.min.css.map

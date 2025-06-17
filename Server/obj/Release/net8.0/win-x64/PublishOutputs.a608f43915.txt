@@ -5,3 +5,8 @@ C:\Users\12554\RiderProjects\AutoUpdata\Server\bin\Release\net8.0\win-x64\publis
 C:\Users\12554\RiderProjects\AutoUpdata\Server\bin\Release\net8.0\win-x64\publish\Server.deps.json
 C:\Users\12554\RiderProjects\AutoUpdata\Server\bin\Release\net8.0\win-x64\publish\Server.runtimeconfig.json
 C:\Users\12554\RiderProjects\AutoUpdata\Server\bin\Release\net8.0\win-x64\publish\Server.pdb
+C:\Users\12554\RiderProjects\AutoUpdata\Server\bin\Release\net8.0\win-x64\publish\Microsoft.Data.Sqlite.dll
+C:\Users\12554\RiderProjects\AutoUpdata\Server\bin\Release\net8.0\win-x64\publish\SQLitePCLRaw.batteries_v2.dll
+C:\Users\12554\RiderProjects\AutoUpdata\Server\bin\Release\net8.0\win-x64\publish\SQLitePCLRaw.core.dll
+C:\Users\12554\RiderProjects\AutoUpdata\Server\bin\Release\net8.0\win-x64\publish\SQLitePCLRaw.provider.e_sqlite3.dll
+C:\Users\12554\RiderProjects\AutoUpdata\Server\bin\Release\net8.0\win-x64\publish\e_sqlite3.dll
