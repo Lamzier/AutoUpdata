@@ -152,13 +152,13 @@
         var targetFolder = Path.Combine(uploadPath, $"{_uploadModel.Name}-{_uploadModel.Version}");
         await AnalysisFileAsync(targetFolder, _uploadModel.Name!, _uploadModel.Version!);
         // 写入到版本数据库
-        await UpdateVersionDatabase(_uploadModel.Name!, _uploadModel.Version!);
+        await UpdateVersionDatabase(_uploadModel.Name!, _uploadModel.Version!, _uploadModel.StartupFile!);
         _showSuccessMessage += "新版本程序提交完成！\n";
         _showProgress = false;
         _progressPercentage = 0;
     }
 
-    private async Task UpdateVersionDatabase(string name, string version)
+    private async Task UpdateVersionDatabase(string name, string version, string startupFile)
     {
         _showSuccessMessage += "正在更新版本数据库...\n";
         _progressPercentage = 99;
@@ -177,6 +177,7 @@
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 name TEXT NOT NULL,
                 version TEXT NOT NULL,
+                startupFile TEXT NOT NULL,
                 createTime DATETIME DEFAULT CURRENT_TIMESTAMP
             )";
             await createTableCmd.ExecuteNonQueryAsync();
@@ -184,14 +185,14 @@
             // 插入新记录
             var insertCmd = connection.CreateCommand();
             insertCmd.CommandText = @"
-            INSERT INTO versions (name, version)
-            VALUES (@name, @version)";
+            INSERT INTO versions (name, version , startupFile)
+            VALUES (@name, @version , @startupFile)";
             insertCmd.Parameters.AddWithValue("@name", name);
             insertCmd.Parameters.AddWithValue("@version", version);
-
+            insertCmd.Parameters.AddWithValue("@startupFile", startupFile);
             await insertCmd.ExecuteNonQueryAsync();
 
-            _showSuccessMessage += $"成功写入数据库：{name} v{version}\n";
+            _showSuccessMessage += $"成功写入数据库：{name}-{version}-{startupFile}\n";
             _progressPercentage = 100;
         }
         catch (Exception ex)

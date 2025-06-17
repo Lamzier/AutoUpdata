@@ -24,7 +24,7 @@ public class VersionController : ControllerBase
 
             var command = connection.CreateCommand();
             command.CommandText = @"
-                SELECT id, name, version, createTime 
+                SELECT id, name, version, startupFile, createTime 
                 FROM versions 
                 ORDER BY createTime DESC 
                 LIMIT 1";
@@ -41,6 +41,7 @@ public class VersionController : ControllerBase
                     id = reader.GetInt32(reader.GetOrdinal("id")),
                     name = reader.GetString(reader.GetOrdinal("name")),
                     version = reader.GetString(reader.GetOrdinal("version")),
+                    startupFile = reader.GetString(reader.GetOrdinal("startupFile")),
                     createTime = reader.GetDateTime(reader.GetOrdinal("createTime"))
                 }
             };

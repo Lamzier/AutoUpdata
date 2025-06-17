@@ -6,7 +6,6 @@ C:\Users\12554\RiderProjects\AutoUpdata\Client-windows-all\bin\Release\net8.0-wi
 C:\Users\12554\RiderProjects\AutoUpdata\Client-windows-all\obj\Release\net8.0-windows\MainWindow.g.cs
 C:\Users\12554\RiderProjects\AutoUpdata\Client-windows-all\obj\Release\net8.0-windows\App.g.cs
 C:\Users\12554\RiderProjects\AutoUpdata\Client-windows-all\obj\Release\net8.0-windows\Client-windows-all_MarkupCompile.cache
-C:\Users\12554\RiderProjects\AutoUpdata\Client-windows-all\obj\Release\net8.0-windows\Client-windows-all_MarkupCompile.lref
 C:\Users\12554\RiderProjects\AutoUpdata\Client-windows-all\obj\Release\net8.0-windows\MainWindow.baml
 C:\Users\12554\RiderProjects\AutoUpdata\Client-windows-all\obj\Release\net8.0-windows\Client-windows-all.g.resources
 C:\Users\12554\RiderProjects\AutoUpdata\Client-windows-all\obj\Release\net8.0-windows\Client-windows-all.GeneratedMSBuildEditorConfig.editorconfig
@@ -19,3 +18,6 @@ C:\Users\12554\RiderProjects\AutoUpdata\Client-windows-all\obj\Release\net8.0-wi
 C:\Users\12554\RiderProjects\AutoUpdata\Client-windows-all\obj\Release\net8.0-windows\Client-windows-all.genruntimeconfig.cache
 C:\Users\12554\RiderProjects\AutoUpdata\Client-windows-all\obj\Release\net8.0-windows\ref\Client-windows-all.dll
 C:\Users\12554\RiderProjects\AutoUpdata\Client-windows-all\obj\Release\net8.0-windows\Client-windows-all.sourcelink.json
+C:\Users\12554\RiderProjects\AutoUpdata\Client-windows-all\bin\Release\net8.0-windows\Newtonsoft.Json.dll
+C:\Users\12554\RiderProjects\AutoUpdata\Client-windows-all\obj\Release\net8.0-windows\Client-windows-all.csproj.AssemblyReference.cache
+C:\Users\12554\RiderProjects\AutoUpdata\Client-windows-all\obj\Release\net8.0-windows\Client-w.1FB4AF21.Up2Date

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "uE96Jx3916o=",
+  "dgSpecHash": "oIRd/viZo/Y=",
   "success": true,
   "projectFilePath": "C:\\Users\\12554\\RiderProjects\\AutoUpdata\\Server\\Server.csproj",
   "expectedPackageFiles": [
@@ -10,8 +10,7 @@
     "C:\\Users\\12554\\.nuget\\packages\\sqlitepclraw.core\\2.1.11\\sqlitepclraw.core.2.1.11.nupkg.sha512",
     "C:\\Users\\12554\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.11\\sqlitepclraw.lib.e_sqlite3.2.1.11.nupkg.sha512",
     "C:\\Users\\12554\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.1.11\\sqlitepclraw.provider.e_sqlite3.2.1.11.nupkg.sha512",
-    "C:\\Users\\12554\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
-    "C:\\Users\\12554\\.nuget\\packages\\microsoft.netcore.app.host.linux-arm64\\8.0.8\\microsoft.netcore.app.host.linux-arm64.8.0.8.nupkg.sha512"
+    "C:\\Users\\12554\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512"
   ],
   "logs": []
 }

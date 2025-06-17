@@ -3,10 +3,78 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Client_windows_all"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="自动更新程序"
+        Height="170"
+        Width="400"
+        ResizeMode="CanMinimize"
+        WindowStartupLocation="CenterScreen"
+        Padding="0"
+        Margin="0">
 
+    <Grid Margin="0">
+        <!-- 定义四行 -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" /> <!-- 第一行：左对齐文本 -->
+            <RowDefinition Height="Auto" /> <!-- 第二行：进度条+文字 -->
+            <RowDefinition Height="Auto" /> <!-- 第三行：状态消息 -->
+            <RowDefinition Height="*" />    <!-- 占满剩余空间 -->
+        </Grid.RowDefinitions>
+
+        <!-- 第一行：左对齐文本 -->
+        <DockPanel Grid.Row="0" Margin="10,5,10,0">
+            <TextBlock x:Name="LeftText"
+                       Text="正在检查更新..."
+                       VerticalAlignment="Top"
+                       DockPanel.Dock="Left" />
+        </DockPanel>
+
+        <!-- 第二行：进度条与文字叠加 -->
+        <Grid Grid.Row="1" Margin="10,5,10,0">
+            <ProgressBar x:Name="UpdateProgress"
+                         Height="15"
+                         Minimum="0" Maximum="100"
+                         Value="0"
+                         HorizontalAlignment="Stretch"
+                         VerticalAlignment="Top" />
+
+            <TextBlock x:Name="ProgressText"
+                       Text="{Binding ElementName=UpdateProgress, Path=Value, StringFormat={}{0}%}"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Foreground="Black"
+                       FontSize="12" />
+        </Grid>
+
+        <!-- 第三行：支持全选/复制的状态消息区域 -->
+        <Border Grid.Row="2"
+                Margin="10,5,10,10"
+                BorderBrush="#CCCCCC"
+                BorderThickness="1"
+                Background="#F9F9F9"
+                CornerRadius="4"
+                Padding="6">
+
+            <ScrollViewer x:Name="StatusScrollViewer"
+                          VerticalScrollBarVisibility="Auto"
+                          HorizontalScrollBarVisibility="Disabled"
+                          MaxHeight="60"
+                          Height="60"
+                          BorderThickness="0"
+                          Background="Transparent">
+
+                <TextBox x:Name="StatusText"
+                         TextWrapping="Wrap"
+                         Foreground="Gray"
+                         FontSize="12"
+                         IsReadOnly="True"
+                         BorderThickness="0"
+                         Background="Transparent"
+                         VerticalScrollBarVisibility="Hidden"
+                         HorizontalScrollBarVisibility="Disabled"
+                         SizeChanged="StatusText_TextChanged"
+                         Text="" />
+            </ScrollViewer>
+        </Border>
     </Grid>
 </Window>
