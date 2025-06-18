@@ -6,6 +6,7 @@ C:\Users\12554\RiderProjects\AutoUpdata\Server\bin\Release\net8.0\linux-x64\publ
 C:\Users\12554\RiderProjects\AutoUpdata\Server\bin\Release\net8.0\linux-x64\publish\Server.runtimeconfig.json
 C:\Users\12554\RiderProjects\AutoUpdata\Server\bin\Release\net8.0\linux-x64\publish\Server.pdb
 C:\Users\12554\RiderProjects\AutoUpdata\Server\bin\Release\net8.0\linux-x64\publish\Microsoft.Data.Sqlite.dll
+C:\Users\12554\RiderProjects\AutoUpdata\Server\bin\Release\net8.0\linux-x64\publish\QRCoder.dll
 C:\Users\12554\RiderProjects\AutoUpdata\Server\bin\Release\net8.0\linux-x64\publish\SQLitePCLRaw.batteries_v2.dll
 C:\Users\12554\RiderProjects\AutoUpdata\Server\bin\Release\net8.0\linux-x64\publish\SQLitePCLRaw.core.dll
 C:\Users\12554\RiderProjects\AutoUpdata\Server\bin\Release\net8.0\linux-x64\publish\SQLitePCLRaw.provider.e_sqlite3.dll

@@ -1,5 +1,6 @@
 using Microsoft.Extensions.FileProviders;
 using Server.Components;
+using Server.Hosted;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 builder.Services.AddControllers(); // 添加MVC
+builder.Services.AddHostedService<StartupTaskService>(); // 添加服务器启动项
 
 var app = builder.Build();
 

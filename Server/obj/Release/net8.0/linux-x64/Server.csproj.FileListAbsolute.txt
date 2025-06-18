@@ -38,3 +38,4 @@ C:\Users\12554\RiderProjects\AutoUpdata\Server\bin\Release\net8.0\linux-x64\libe
 C:\Users\12554\RiderProjects\AutoUpdata\Server\obj\Release\net8.0\linux-x64\Server.csproj.AssemblyReference.cache
 C:\Users\12554\RiderProjects\AutoUpdata\Server\obj\Release\net8.0\linux-x64\Server.sourcelink.json
 C:\Users\12554\RiderProjects\AutoUpdata\Server\obj\Release\net8.0\linux-x64\Server.csproj.Up2Date
+C:\Users\12554\RiderProjects\AutoUpdata\Server\bin\Release\net8.0\linux-x64\QRCoder.dll

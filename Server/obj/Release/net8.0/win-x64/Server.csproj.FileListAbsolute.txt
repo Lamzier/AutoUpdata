@@ -38,3 +38,4 @@ C:\Users\12554\RiderProjects\AutoUpdata\Server\obj\Release\net8.0\win-x64\Server
 C:\Users\12554\RiderProjects\AutoUpdata\Server\obj\Release\net8.0\win-x64\Server.csproj.Up2Date
 C:\Users\12554\RiderProjects\AutoUpdata\Server\bin\Release\net8.0\win-x64\wwwroot\bootstrap\bootstrap.min.css
 C:\Users\12554\RiderProjects\AutoUpdata\Server\bin\Release\net8.0\win-x64\wwwroot\bootstrap\bootstrap.min.css.map
+C:\Users\12554\RiderProjects\AutoUpdata\Server\bin\Release\net8.0\win-x64\QRCoder.dll
