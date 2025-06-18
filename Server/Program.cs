@@ -26,12 +26,19 @@ app.UseStaticFiles();
 var uploadPath = Path.Combine(builder.Environment.ContentRootPath, "upload");
 if (!Directory.Exists(uploadPath)) Directory.CreateDirectory(uploadPath);
 
-// 使用静态资源
-app.UseStaticFiles(new StaticFileOptions
+
+// 静态资源，允许所有后缀传输
+var staticFileOptions = new StaticFileOptions
 {
-    FileProvider = new PhysicalFileProvider(Path.Combine(builder.Environment.ContentRootPath, "upload")),
-    RequestPath = "/static/upload"
-});
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(builder.Environment.ContentRootPath, "upload")),
+    RequestPath = "/static/upload",
+    ServeUnknownFileTypes = true, // 允许所有文件类型
+    DefaultContentType = "application/octet-stream" // 强制所有文件作为二进制流传输
+};
+app.UseStaticFiles(staticFileOptions);
+
+
 app.UseAntiforgery();
 
 // 使用中间件

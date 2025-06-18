@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AutoUpdata")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6b59632d34638df4db1bdeb245eda7b50a4ff034")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ae0cf87a4988ec6552a0dc960bc3055b9d0259f5")]
 [assembly: System.Reflection.AssemblyProductAttribute("AutoUpdata")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AutoUpdata")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

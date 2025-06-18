@@ -14,4 +14,15 @@
         <PackageReference Include="Newtonsoft.Json" Version="13.0.3"/>
     </ItemGroup>
 
+    <ItemGroup>
+        <None Remove="restart.bat"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="restart.vbs"/>
+        <Content Include="restart.vbs">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
+
 </Project>
