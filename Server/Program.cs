@@ -50,4 +50,5 @@ app.MapControllers(); // 映射Api控制器路由
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
 
+app.Urls.Add("http://0.0.0.0:5000"); // 允许所有Ip
 app.Run();

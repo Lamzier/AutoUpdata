@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Client-windows-all")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2e37ae9aa53df6a6276afcee303207e7ff31f76d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+95f3b6c332343f9351bdb9f00b5fac486bd8cba0")]
 [assembly: System.Reflection.AssemblyProductAttribute("Client-windows-all")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Client-windows-all")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
