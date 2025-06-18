@@ -44,6 +44,7 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.0-preview.5.25277.114"/>
+        <PackageReference Include="QRCoder" Version="1.6.0"/>
     </ItemGroup>
 
     <ItemGroup>
@@ -60,7 +61,7 @@
 
     <ItemGroup>
         <None Remove="upload\**"/>
-        <None Remove="version.db" />
+        <None Remove="version.db"/>
     </ItemGroup>
 
 </Project>

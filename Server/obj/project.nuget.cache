@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "REbO0l70GAA=",
+  "dgSpecHash": "sMwXqbGibAk=",
   "success": true,
   "projectFilePath": "C:\\Users\\12554\\RiderProjects\\AutoUpdata\\Server\\Server.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\12554\\.nuget\\packages\\microsoft.data.sqlite\\10.0.0-preview.5.25277.114\\microsoft.data.sqlite.10.0.0-preview.5.25277.114.nupkg.sha512",
     "C:\\Users\\12554\\.nuget\\packages\\microsoft.data.sqlite.core\\10.0.0-preview.5.25277.114\\microsoft.data.sqlite.core.10.0.0-preview.5.25277.114.nupkg.sha512",
+    "C:\\Users\\12554\\.nuget\\packages\\qrcoder\\1.6.0\\qrcoder.1.6.0.nupkg.sha512",
     "C:\\Users\\12554\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.1.11\\sqlitepclraw.bundle_e_sqlite3.2.1.11.nupkg.sha512",
     "C:\\Users\\12554\\.nuget\\packages\\sqlitepclraw.core\\2.1.11\\sqlitepclraw.core.2.1.11.nupkg.sha512",
     "C:\\Users\\12554\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.11\\sqlitepclraw.lib.e_sqlite3.2.1.11.nupkg.sha512",
