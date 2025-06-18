@@ -11,40 +11,31 @@ public static class LocalInfo
         GetLocalInfo();
     }
 
+    // 项目名称，也是文件夹名称
+    public static string Name { get; set; } = "Test";
+
     // 服务器地址
-    private static string ServerUrl { get; set; } = "http://localhost:5000";
+    public static string ServerUrl { get; set; } = "http://localhost:5000";
 
     // 当前版本号
-    private static string Version { get; set; } = "0.0.0";
+    public static string Version { get; set; } = "0.0.0";
 
-    private static string StartupFile { get; set; } = "start.exe";
+    public static string StartupFile { get; set; } = "start.exe";
 
-    private static DateTime CreateTime { get; set; }
+    public static DateTime CreateTime { get; set; }
 
-    private static int Id { get; set; } = -1;
+    public static int Id { get; set; } = -1;
 
-    public static string GetStartupFile()
-    {
-        return StartupFile;
-    }
+    public static bool IsDeleteExcessFiles { get; set; } = true; // 默认删除多余文件
 
-    public static string GetServerUrl()
-    {
-        return ServerUrl;
-    }
 
-    public static string GetVersion()
-    {
-        return Version;
-    }
-
-    private static void SaveLocalInfo()
+    public static void SaveLocalInfo()
     {
         try
         {
             var config = new
             {
-                Id, ServerUrl, Version, StartupFile, CreateTime
+                Id, Name, ServerUrl, Version, StartupFile, CreateTime, IsDeleteExcessFiles
             };
             var json = JsonConvert.SerializeObject(config, Formatting.Indented);
             var filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "info.json");
@@ -75,9 +66,11 @@ public static class LocalInfo
             dynamic data = JsonConvert.DeserializeObject(json)!;
             ServerUrl = data.ServerUrl ?? "http://localhost:5000";
             Version = data.Version ?? "1.0.0";
-            Id = data.Id;
+            Id = data.Id ?? -1;
             StartupFile = data.StartupFile ?? "start.exe";
             CreateTime = data.CreateTime;
+            Name = data.Name ?? "Test";
+            IsDeleteExcessFiles = data.IsDeleteExcessFiles ?? true;
             MainWindow.Instance.AddStatusText("成功加载 info.json 配置。");
             MainWindow.Instance.AddStatusText($"服务器地址：{ServerUrl}");
             MainWindow.Instance.AddStatusText($"当前版本号：{Version}");

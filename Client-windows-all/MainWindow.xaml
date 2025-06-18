@@ -24,7 +24,7 @@
         <!-- 第一行：左对齐文本 -->
         <DockPanel Grid.Row="0" Margin="10,5,10,0">
             <TextBlock x:Name="LeftText"
-                       Text="正在检查更新..."
+                       Text="正在执行更新程序..."
                        VerticalAlignment="Top"
                        DockPanel.Dock="Left" />
         </DockPanel>
