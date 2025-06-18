@@ -5,7 +5,7 @@ namespace Server.Hosted;
 public class StartupTaskService : IHostedService
 {
     public Task StartAsync(CancellationToken cancellationToken)
-    {
+    { 
         _ = ShowCode();
         return Task.CompletedTask;
     }
