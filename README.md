@@ -33,6 +33,17 @@
 
 #### 2、部署服务端
 
-① Linux 系统
+【1】 Linux 系统
 
-② Windows 系统
+建议：先使用Screen创建一个新会话
+
+```bash
+screen -S AutoUpload
+```
+
+解压软件包，cd进入到软件包目录
+
+
+
+
+【2】 Windows 系统
