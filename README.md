@@ -113,7 +113,15 @@ Dns映射域名
 
 #### 5、配置客户端
 
+解压客户端文件
 
+![image](https://github.com/user-attachments/assets/19193f99-f21c-4129-9581-a4da99b7012c)
+
+双击运行 Client-windows-all.exe
+
+Client-windows-all.exe 可以修改启动文件为你的游戏名称，例如：HMCL.exe
+
+Client-windows-all.exe 图标可以通过软件改成自己的图标，推荐修改图标软件[【CN911】换exe图标](https://www.52pojie.cn/thread-1196729-1-1.html) 亲测有效
 
 
 
