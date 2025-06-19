@@ -1,7 +1,6 @@
 <div align="center">
   <h1>🚀 自动更新程序</h1>
   <p>精准、高效的游戏更新解决方案 - 支持Windows和Linux环境</p>
-  <img src="https://img.icons8.com/color/96/000000/update.png" alt="更新图标" style="height: 96px; width: 96px;"/>
 </div>
 
 ## 🌟 软件特点
