@@ -41,9 +41,42 @@
 screen -S AutoUpload
 ```
 
-解压软件包，cd进入到软件包目录
+解压服务端
 
+```bash
+unzip Server-all.zip -d Server
+cd Server
+```
 
+安装 dotnet 8.0 或以上，可以参考[微软官网](https://learn.microsoft.com/zh-cn/dotnet/core/install/linux)
 
+这里使用脚本安装为例
+
+```bash
+wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
+chmod +x ./dotnet-install.sh
+./dotnet-install.sh --version latest
+dotnet --version
+```
+
+如果出现版本大于8就可以了，例如：8.0.411
+
+运行服务端
+
+```bash
+dotnet Server.dll
+```
+
+![fd96f56f533a3ad2257142ea87a2a77f](https://github.com/user-attachments/assets/48ab95e9-efe0-4cab-9e04-4064ee68dafd)
 
 【2】 Windows 系统
+
+下载并安装Dotnet8或以上的版本，可以参考[微软官网](https://dotnet.microsoft.com/zh-cn/download/dotnet/8.0)
+
+解压服务端文件，双击Server.exe 打开文件
+
+![image](https://github.com/user-attachments/assets/b80916c9-a550-4a19-9429-c1b0faa7e3e7)
+
+![image](https://github.com/user-attachments/assets/f56fc2ac-56ac-43b5-9a77-e25fdfb3c832)
+
+
