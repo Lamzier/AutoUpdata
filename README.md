@@ -117,11 +117,28 @@ Dns映射域名
 
 ![image](https://github.com/user-attachments/assets/19193f99-f21c-4129-9581-a4da99b7012c)
 
-双击运行 Client-windows-all.exe
-
 Client-windows-all.exe 可以修改启动文件为你的游戏名称，例如：HMCL.exe
 
 Client-windows-all.exe 图标可以通过软件改成自己的图标，推荐修改图标软件[【CN911】换exe图标](https://www.52pojie.cn/thread-1196729-1-1.html) 亲测有效
+
+双击运行 Client-windows-all.exe，第一次会运行错误生成一个info.json文件
+
+![image](https://github.com/user-attachments/assets/d257086a-7cef-4cbc-a544-5d50c50f829a)
+
+修改info.json文件
+
+```json
+{
+  "Id": -1,                               # 不用管，会从服务器自动更新
+  "Name": "Test",                         # 不用管，会从服务器自动更新
+  "ServerUrl": "http://localhost:5000",   # 修改成你的服务器地址
+  "Version": "0.0.0",                     # 不用管，会从服务器自动更新
+  "StartupFile": "start.exe",             # 不用管，会从服务器自动更新
+  "CreateTime": "0001-01-01T00:00:00",    # 不用管，会从服务器自动更新
+  "IsDeleteExcessFiles": true             # 是否启用删除更新策略
+}
+```
+
 
 
 
