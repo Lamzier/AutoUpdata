@@ -79,4 +79,30 @@ dotnet Server.dll
 
 ![image](https://github.com/user-attachments/assets/f56fc2ac-56ac-43b5-9a77-e25fdfb3c832)
 
+#### 3、配置防火墙、或Dns
+
+默认端口 **5000** ，需要配置开放端口
+
+Dns映射域名
+
+#### 4、上传新版本游戏
+
+打开网址：http://{你的Ip或域名}:5000
+
+例如：http://127.0.0.1:5000
+
+![image](https://github.com/user-attachments/assets/c7d13369-5d17-4b55-b166-7625464e35de)
+
+注意事项：
+上传的文件夹
+
+
+上传Zip游戏文件，文件只能是zip压缩，并且zip的根目录必须有游戏的启动程序exe，例如：GBA.zip
+
+![image](https://github.com/user-attachments/assets/15397750-cfb2-4d2b-ba35-bb3507192565)
+
+
+
+
+
 
