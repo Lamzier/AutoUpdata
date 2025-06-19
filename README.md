@@ -176,7 +176,7 @@ A: 程序支持断点续传，重新启动客户端会自动继续更新
 
 **MIT License**  
 
-Copyright (c) [年份] [作者名称]  
+Copyright (c) 2025 Lamzy  
 
 特此免费授予任何获得本软件副本和相关文档文件（以下简称"软件"）的人不受限制地处理本软件的权限，包括但不限于使用、复制、修改、合并、发布、分发、再许可和/或销售本软件副本的权利，并允许向其提供本软件的人这样做，但须符合以下条件：  
 
@@ -202,7 +202,7 @@ Copyright (c) [年份] [作者名称]
 
 如有任何问题或建议，请联系我们：  
 
-- 邮箱: support@example.com  
+- 邮箱: 1255461704@qq.com
 - GitHub Issues: [https://github.com/Lamzier/AutoUpdata/issues](https://github.com/Lamzier/AutoUpdata/issues)  
 
 ---
