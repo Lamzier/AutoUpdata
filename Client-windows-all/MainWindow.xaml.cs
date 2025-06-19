@@ -48,6 +48,7 @@ public partial class MainWindow
                 LocalInfo.StartupFile // 启动文件名
             );
             OpenExe(fullStartupPath);
+            // ReStartApp(); // 测试
             return;
         }
 
@@ -75,48 +76,66 @@ public partial class MainWindow
     {
         try
         {
-            // 获取当前程序路径和VBS脚本路径
-            var currentDir = Directory.GetCurrentDirectory();
-            var vbsPath = Path.Combine(currentDir, "restart.vbs");
-            var exePath = Process.GetCurrentProcess().MainModule?.FileName;
+            // 获取当前程序路径
+            var currentExePath = Process.GetCurrentProcess().MainModule?.FileName;
+            if (currentExePath == null || !File.Exists(currentExePath))
+                throw new FileNotFoundException("无法定位当前程序路径", currentExePath);
 
-            // 验证关键文件存在性
-            if (!File.Exists(vbsPath))
-                throw new FileNotFoundException("未找到重启脚本 restart.vbs", vbsPath);
-            if (exePath == null || !File.Exists(exePath))
-                throw new FileNotFoundException("无法定位当前程序路径", exePath);
+            // 获取Restart.exe路径（与当前程序同目录）
+            var restartExePath = Path.Combine(
+                Directory.GetCurrentDirectory(),
+                "Restart.exe"
+            );
 
-            // 启动VBS脚本（隐藏窗口）
+            // 验证Restart.exe是否存在
+            if (!File.Exists(restartExePath))
+                throw new FileNotFoundException("未找到重启工具 Restart.exe", restartExePath);
+
+            // 构建参数：当前程序路径 + 等待时间 + hide
+            var arguments = $"\"{currentExePath}\" 5 hide";
+
+            AddStatusText("正在执行重启程序...");
+
+            // 启动Restart.exe（隐藏窗口）
             var startInfo = new ProcessStartInfo
             {
-                FileName = "wscript.exe",
-                Arguments = $"\"{vbsPath}\" \"{exePath}\"", // 传递exe路径给VBS
-                UseShellExecute = true,
-                WindowStyle = ProcessWindowStyle.Hidden
+                FileName = restartExePath,
+                Arguments = arguments,
+                UseShellExecute = false, // 不使用Shell执行
+                CreateNoWindow = true // 不创建控制台窗口
             };
 
-            if (Process.Start(startInfo) == null)
-                throw new Win32Exception("启动VBS脚本失败");
+            // 启动重启进程
+            var restartProcess = Process.Start(startInfo);
+            if (restartProcess == null)
+                throw new Win32Exception("启动重启工具失败");
 
-            AddStatusText("重启脚本已执行，即将关闭当前程序...");
+            // 添加状态信息
+            AddStatusText("重启程序已启动，即将关闭当前程序...");
+            AddStatusText($"重启命令: {restartExePath} {arguments}");
 
-            // 立即关闭应用程序
+            // 关闭当前程序
             _ = ShutDownApp();
         }
         catch (Win32Exception ex)
         {
             HandleRestartError(ex.NativeErrorCode switch
             {
-                0x00000002 => "找不到VBS脚本或程序文件",
-                0x00000005 => "权限不足无法执行脚本",
+                0x00000002 => "找不到重启工具或程序文件",
+                0x00000005 => "权限不足无法执行重启",
                 _ => $"系统错误 (0x{ex.NativeErrorCode:X8})"
             }, ex);
         }
+        catch (FileNotFoundException ex)
+        {
+            HandleRestartError($"文件缺失: {ex.FileName}", ex);
+        }
         catch (Exception ex)
         {
-            HandleRestartError("启动过程中发生意外错误", ex);
+            HandleRestartError("重启过程中发生意外错误", ex);
         }
     }
+
 
     private async Task ShutDownApp()
     {

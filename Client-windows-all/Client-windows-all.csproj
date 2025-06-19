@@ -20,8 +20,12 @@
 
     <ItemGroup>
         <None Remove="restart.vbs"/>
-        <Content Include="restart.vbs">
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="Restart.exe"/>
+        <Content Include="Restart.exe">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
     </ItemGroup>
 
