@@ -27,4 +27,6 @@
 
 1、[下载](https://github.com/Lamzier/AutoUpdata/releases/latest) 客户端 和 服务端
 
-1、部署服务端，下载Server文件
+![image](https://github.com/user-attachments/assets/3d4fba10-2acf-4ab3-923a-1c3ab1402d12)
+
+2、部署服务端，下载Server文件
