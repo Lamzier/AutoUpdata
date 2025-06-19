@@ -93,13 +93,26 @@ Dns映射域名
 
 ![image](https://github.com/user-attachments/assets/c7d13369-5d17-4b55-b166-7625464e35de)
 
-注意事项：
-上传的文件夹
-
+  注意事项：
+  
+  游戏文件：建议（非强制）上传的文件夹名称不要加上版本号，就游戏名称永恒不变
+  
+  名称：建议（非强制）填写游戏名称，永恒不变
+  
+  版本号：不要出现特殊字符
+  
+  启动文件：把你游戏文件根目的启动文件名称复制过来，可以使用相对路径，但是没测试过！！
 
 上传Zip游戏文件，文件只能是zip压缩，并且zip的根目录必须有游戏的启动程序exe，例如：GBA.zip
 
 ![image](https://github.com/user-attachments/assets/15397750-cfb2-4d2b-ba35-bb3507192565)
+
+![image](https://github.com/user-attachments/assets/e8b116eb-ea31-41f5-9a4b-09f55247b972)
+
+出现：新版本程序提交完成 就表示新版本已经上传完毕了
+
+#### 5、配置客户端
+
 
 
 
