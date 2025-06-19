@@ -25,8 +25,14 @@
 
 ### 使用教程
 
-1、[下载](https://github.com/Lamzier/AutoUpdata/releases/latest) 客户端 和 服务端
+#### 1、下载软件
+
+[下载](https://github.com/Lamzier/AutoUpdata/releases/latest) 客户端 和 服务端
 
 ![image](https://github.com/user-attachments/assets/3d4fba10-2acf-4ab3-923a-1c3ab1402d12)
 
-2、部署服务端，下载Server文件
+#### 2、部署服务端
+
+① Linux 系统
+
+② Windows 系统
